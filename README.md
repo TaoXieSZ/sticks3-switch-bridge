@@ -57,6 +57,17 @@ pio device monitor -e sticks3
 
 首次构建会下载 pioarduino 平台和 Adafruit TinyUSB，约 20–30 分钟；之后增量构建很快。
 
+已验证（2026-10-26）：
+
+```
+pio run -e sticks3  SUCCESS
+Flash 29.8% (996 KB / 3.3 MB app)
+RAM   21.2%
+```
+
+> 本固件只有 Wi‑Fi TCP；`host/esp32_switch.py --port` 的串口路径保留给 UART 固件/其他板子，
+> 不是这个 StickS3 构建的默认用法。TCP 模式不需要 pyserial。
+
 ### 烧录进下载模式
 
 StickS3 如果不进下载模式：按住侧面 reset 键，直到绿灯闪烁，再执行 upload。
