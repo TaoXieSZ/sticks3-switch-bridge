@@ -1,6 +1,6 @@
 # 小红书草稿 · M5StickS3 × Switch 2
 
-> 发布前把 `[GitHub 链接]` 换成真实仓库地址；先发“玩法/过程”，再发“开源”第二条，流量更好。
+> 发布前把 https://github.com/TaoXieSZ/sticks3-switch-bridge 换成真实仓库地址；先发“玩法/过程”，再发“开源”第二条，流量更好。
 
 ## 标题备选
 
@@ -57,7 +57,7 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 底座
 - 没有震动，IMU 是固定重力；
 - Switch 固件更新可能影响 HID 握手。
 
-代码和接线都整理成单独仓库了：`[GitHub 链接]`
+代码和接线都整理成单独仓库了：https://github.com/TaoXieSZ/sticks3-switch-bridge
 （MIT，含 HID 驱动来源说明；不要提交 Wi‑Fi 密码。）
 
 ## 配图建议
