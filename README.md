@@ -9,6 +9,8 @@
 Mac / PC ──WiFi TCP 8765──> M5StickS3 ──USB HID──> Switch 2 dock
 ```
 
+![architecture](docs/images/architecture.svg)
+
 ## 为什么是 StickS3
 
 Switch 的 Pro 手柄走 **USB HID 有线**或 **蓝牙 Classic**。ESP32-S3 没有蓝牙 Classic，
