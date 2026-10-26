@@ -1,5 +1,7 @@
 # StickS3 Switch Bridge
 
+https://github.com/TaoXieSZ/sticks3-switch-bridge
+
 把 **M5StickS3**（ESP32-S3）变成 **Switch / Switch 2 认识的有线 Pro 手柄**，用 Wi‑Fi 从 Mac / PC 发按键指令。
 
 > Turn an M5StickS3 into a wired Switch Pro Controller, controlled over Wi‑Fi.
@@ -10,6 +12,12 @@ Mac / PC ──WiFi TCP 8765──> M5StickS3 ──USB HID──> Switch 2 dock
 ```
 
 ![architecture](docs/images/architecture.svg)
+
+## 状态
+
+- v0.1.0：M5StickS3 + Switch 2 实测通过；源码 MIT。
+- 只有源码，固件自行编译；没有预编译 bin / CI（下一步）。
+- 不是任天堂/M5Stack 官方项目。
 
 ## 为什么是 StickS3
 

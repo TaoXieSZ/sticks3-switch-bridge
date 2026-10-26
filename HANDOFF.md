@@ -2,7 +2,7 @@
 
 > 交接时间：2026-10-26
 > 当前版本：v0.1.0（本地 tag，已准备推 GitHub）
-> 目标仓库：`github.com/TaoXieSZ/sticks3-switch-bridge`（public）
+> 仓库：https://github.com/TaoXieSZ/sticks3-switch-bridge （public，已推送）
 
 ## 1. 这个项目是什么
 
@@ -30,7 +30,7 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 dock
 | Host 单元测试 | ✅ 16 passed |
 | 安全补丁（Wi-Fi 断线松键） | ✅ 已进源码；**用户手上的旧固件还没重烧** |
 | 仓库 | ✅ 本地 git，2 个 commit 以上，tag `v0.1.0` |
-| GitHub | ⏳ 待创建/推送（gh 已登录 `TaoXieSZ`） |
+| GitHub | ✅ 已创建并推送：https://github.com/TaoXieSZ/sticks3-switch-bridge |
 | 文档 | README / PROTOCOL / firmware README / 本文 / XIAOHONGSHU |
 
 ## 3. 目录
@@ -98,7 +98,7 @@ Switch 2：设置 → 手柄与外设 → **Pro 手柄有线通讯** → 开。
 
 ## 7. 下一步
 
-1. 创建 GitHub public repo 并 push main + tags。
+1. ~~创建 GitHub public repo 并 push main + tags。~~ 已完成。
 2. 加 GitHub Actions：`pio run -e sticks3`。
 3. 发 v0.1.0 Release，附 `firmware.bin` + SHA256（可选）。
 4. 补实拍/视频：StickS3 插底座、Switch 识别 Pro 手柄、`test` 按键。
