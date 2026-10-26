@@ -1,0 +1,20 @@
+# PlatformIO
+.pio/
+.pio-core/
+firmware/.pio/
+firmware/.pio-core/
+firmware/dist/
+*.bin
+
+# secrets / local state
+firmware/src/wifi_secrets.h
+.last_ip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store
