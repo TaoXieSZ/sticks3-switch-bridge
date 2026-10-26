@@ -121,6 +121,17 @@ AA 55 | cmd(0x00) | 45-byte report | XOR
 - **直播/自动化**：OBS、Stream Deck、快捷指令都能通过 TCP 调用。
 - **掌机外壳**：3D 打印一个底座，把 StickS3 做成桌面控制器。
 
+## 兼容性 / 验证
+
+| 硬件 | 状态 |
+|---|---|
+| M5StickS3 + Switch 2 | ✅ 实测 |
+| Switch 1 | ⏳ 未实测 |
+| Cardputer-ADV | ⏳ 能编译，未实测 |
+| CoreS3 | ⏳ 能编译，未实测 |
+
+遇到问题先看 [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)。
+
 ## 限制
 
 - **没有震动**：当前 45 字节输入报告不带 rumble。
@@ -146,6 +157,13 @@ docs/              协议与架构图
 - HID 描述符、驱动与握手逻辑来自 [churunfa/SwitchProControllerEsp32S3](https://github.com/churunfa/SwitchProControllerEsp32S3)（MIT，Copyright © 2026 crf）。
 - Adafruit TinyUSB 库。
 - 本项目其余代码 MIT。
+
+## 交接 / 开发
+
+- [`HANDOFF.md`](HANDOFF.md) — 当前状态、已知坑、下一步
+- [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- [`SECURITY.md`](SECURITY.md)
+- [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)
 
 ## License
 
