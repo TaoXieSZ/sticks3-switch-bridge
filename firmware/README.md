@@ -51,6 +51,7 @@ scaled with the same layout.
   order (home first, phone hotspot second), waits 12s each at boot and 8s each
   on reconnect, and retries every 10s.
 - The StickS3 screen shows `Network 1/2` while trying, then the IP.
+- Full guide: [`../docs/WIFI.md`](../docs/WIFI.md).
 - Credentials live in `src/wifi_secrets.h`; it is gitignored.
 - TCP has **no authentication**. Use a trusted LAN; don't port-forward 8765.
 

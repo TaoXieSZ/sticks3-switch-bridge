@@ -32,7 +32,8 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 dock
 | 安全补丁（Wi-Fi 断线松键） | ✅ 已进源码；**正确的 StickS3 待重烧** |
 | 仓库 | ✅ 本地 git，tag `v0.1.1`（待推送） |
 | GitHub | ✅ 已创建并推送：https://github.com/TaoXieSZ/sticks3-switch-bridge |
-| 文档 | README / PROTOCOL / firmware README / 本文 / XIAOHONGSHU |
+| CI | ⏳ 首次 build 运行中（Actions） |
+| 文档 | README / PROTOCOL / WIFI / firmware README / 本文 / XIAOHONGSHU |
 
 ## 3. 目录
 
@@ -96,7 +97,7 @@ Switch 2：设置 → 手柄与外设 → **Pro 手柄有线通讯** → 开。
 - **没有预编译 bin**；CI 已加（`.github/workflows/build.yml`），源码构建可复现。
 - **没有硬件照片/视频**；小红书封面目前用架构图，最好补实拍。
 - **烧录先核对 USB 序列号/MAC**：不要只按 `usbmodem` 路径刷机；新屏幕固件尚未烧到正确 StickS3。
-- **双 Wi-Fi**：`WIFI_NETWORK_LIST` 家里第一、手机热点第二；两个都失败每 10 秒重试。
+- **双 Wi-Fi**：`WIFI_NETWORK_LIST` 家里第一、手机热点第二；两个都失败每 10 秒重试。详见 `docs/WIFI.md`。
 - **仓库作者邮箱**已改为 `txie@users.noreply.github.com`，避免工作邮箱公开。
 
 ## 7. 下一步

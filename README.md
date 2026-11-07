@@ -33,7 +33,7 @@ Switch 的 Pro 手柄走 **USB HID 有线**或 **蓝牙 Classic**。ESP32-S3 没
 
 - 完整按键：A/B/X/Y、L/R/ZL/ZR、十字键、Plus/Minus、Home/Capture、L3/R3。
 - 左右摇杆 12‑bit（0–4095，中心 2048）。
-- **双 Wi‑Fi 回退**：家里 Wi‑Fi 失败自动切手机热点；两个都失败每 10 秒重试。
+- **双 Wi‑Fi 回退**：家里 Wi‑Fi 失败自动切手机热点；两个都失败每 10 秒重试。详见 [`docs/WIFI.md`](docs/WIFI.md)。
 - StickS3 屏幕显示 Wi‑Fi/IP、客户端、按键/摇杆输入和断线松键状态。
 - Wi‑Fi TCP 8765，49 字节包；2 秒无包自动松键。
 - 附带 Python 主机端：`tap`、`hold`、`combo`、`stick`、`sequence`、`shell`、`test`。
@@ -142,7 +142,7 @@ AA 55 | cmd(0x00) | 45-byte report | XOR
 | Cardputer-ADV | ⏳ 能编译，未实测 |
 | CoreS3 | ⏳ 能编译，未实测 |
 
-遇到问题先看 [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)。
+Wi‑Fi 配置/回退见 [`docs/WIFI.md`](docs/WIFI.md)；其他问题见 [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)。
 
 ## 限制
 
