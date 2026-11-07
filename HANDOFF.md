@@ -1,7 +1,7 @@
 # Handoff · StickS3 Switch Bridge
 
-> 交接时间：2026-10-26
-> 当前版本：v0.1.0（本地 tag，已准备推 GitHub）
+> 交接时间：2026-10-27
+> 当前版本：v0.1.1（屏幕 + 双 Wi-Fi 回退）
 > 仓库：https://github.com/TaoXieSZ/sticks3-switch-bridge （public，已推送）
 
 ## 1. 这个项目是什么
@@ -24,12 +24,13 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 dock
 
 | 项 | 状态 |
 |---|---|
-| 固件编译 `pio run -e sticks3` | ✅ SUCCESS（996 KB，Flash 29.8%，RAM 21.2%） |
-| StickS3 + Switch 2 实际按键 | ✅ 已验证（在安全补丁之前） |
+| 固件编译 `pio run -e sticks3` | ✅ SUCCESS（1.20 MB，Flash 36.0%，RAM 22.1%） |
+| StickS3 + Switch 2 实际按键 | ✅ 旧固件已验证；新屏幕固件待正确设备实测 |
+| StickS3 屏幕界面 | ✅ M5GFX 代码编译通过；**尚未烧录到正确 StickS3** |
 | Wi-Fi TCP + Python CLI | ✅ 已验证 |
 | Host 单元测试 | ✅ 16 passed |
-| 安全补丁（Wi-Fi 断线松键） | ✅ 已进源码；**用户手上的旧固件还没重烧** |
-| 仓库 | ✅ 本地 git，2 个 commit 以上，tag `v0.1.0` |
+| 安全补丁（Wi-Fi 断线松键） | ✅ 已进源码；**正确的 StickS3 待重烧** |
+| 仓库 | ✅ 本地 git，tag `v0.1.1`（待推送） |
 | GitHub | ✅ 已创建并推送：https://github.com/TaoXieSZ/sticks3-switch-bridge |
 | 文档 | README / PROTOCOL / firmware README / 本文 / XIAOHONGSHU |
 
@@ -39,6 +40,7 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 dock
 firmware/
   platformio.ini          pioarduino 55.03.37；env: sticks3/cardputer/cores3
   src/main.cpp            Wi-Fi + TCP 8765 + 45-byte input report
+  src/BridgeDisplay.*     M5GFX 屏幕状态界面
   src/SwitchPro*.{h,cpp}  HID 描述符/驱动（第三方 MIT）
   src/wifi_secrets.h.example
 host/
@@ -90,17 +92,18 @@ Switch 2：设置 → 手柄与外设 → **Pro 手柄有线通讯** → 开。
 - **TCP 无鉴权**：只适合可信局域网；不要端口映射。
 - **Wi-Fi 2.4GHz only**。
 - **`ARDUINO_USB_MODE` 重复定义警告**：板级 JSON 默认 `=1`，build_flags 设 `=0`；警告无害，HID 正常。
-- **Cardputer / CoreS3 环境未实测**；只有 StickS3 + Switch 2 验证。
-- **没有 CI / 预编译 bin / GitHub Release**；当前只有源码。
+- **Cardputer / CoreS3 环境已编译通过但未实测**；只有 StickS3 + Switch 2 验证。
+- **没有预编译 bin**；CI 已加（`.github/workflows/build.yml`），源码构建可复现。
 - **没有硬件照片/视频**；小红书封面目前用架构图，最好补实拍。
-- **安全补丁未烧录**：如果用户继续用旧二进制，Wi-Fi 断线时可能保持按键；重烧即可。
+- **烧录先核对 USB 序列号/MAC**：不要只按 `usbmodem` 路径刷机；新屏幕固件尚未烧到正确 StickS3。
+- **双 Wi-Fi**：`WIFI_NETWORK_LIST` 家里第一、手机热点第二；两个都失败每 10 秒重试。
 - **仓库作者邮箱**已改为 `txie@users.noreply.github.com`，避免工作邮箱公开。
 
 ## 7. 下一步
 
 1. ~~创建 GitHub public repo 并 push main + tags。~~ 已完成。
-2. 加 GitHub Actions：`pio run -e sticks3`。
-3. 发 v0.1.0 Release，附 `firmware.bin` + SHA256（可选）。
+2. ~~加 GitHub Actions：`pio run -e sticks3`。~~ 已加。
+3. 发 v0.1.1 Release；如有需要再附 `firmware.bin` + SHA256。
 4. 补实拍/视频：StickS3 插底座、Switch 识别 Pro 手柄、`test` 按键。
 5. 测 Switch 1（如果手头有）。
 6. 可选：加 TCP token、mDNS、rumble 协议扩展。

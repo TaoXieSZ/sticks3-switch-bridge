@@ -15,8 +15,8 @@ Mac / PC ──WiFi TCP 8765──> M5StickS3 ──USB HID──> Switch 2 dock
 
 ## 状态
 
-- v0.1.0：M5StickS3 + Switch 2 实测通过；源码 MIT。
-- 只有源码，固件自行编译；没有预编译 bin / CI（下一步）。
+- v0.1.1：StickS3 屏幕 + 双 Wi-Fi 回退；M5StickS3 + Switch 2 旧固件实测通过；源码 MIT。
+- 只有源码，固件自行编译；GitHub Actions 会编译 `sticks3` 环境。
 - 不是任天堂/M5Stack 官方项目。
 
 ## 为什么是 StickS3
@@ -33,9 +33,11 @@ Switch 的 Pro 手柄走 **USB HID 有线**或 **蓝牙 Classic**。ESP32-S3 没
 
 - 完整按键：A/B/X/Y、L/R/ZL/ZR、十字键、Plus/Minus、Home/Capture、L3/R3。
 - 左右摇杆 12‑bit（0–4095，中心 2048）。
+- **双 Wi‑Fi 回退**：家里 Wi‑Fi 失败自动切手机热点；两个都失败每 10 秒重试。
+- StickS3 屏幕显示 Wi‑Fi/IP、客户端、按键/摇杆输入和断线松键状态。
 - Wi‑Fi TCP 8765，49 字节包；2 秒无包自动松键。
 - 附带 Python 主机端：`tap`、`hold`、`combo`、`stick`、`sequence`、`shell`、`test`。
-- 没有 LittleFS / 图执行器 / BLE sniffer / OTA，固件 1MB 以内。
+- 没有 LittleFS / 图执行器 / BLE sniffer / OTA，固件约 1.2MB。
 
 ## 硬件
 
@@ -55,7 +57,9 @@ Switch 的 Pro 手柄走 **USB HID 有线**或 **蓝牙 Classic**。ESP32-S3 没
 ```bash
 cd firmware
 cp src/wifi_secrets.h.example src/wifi_secrets.h
-# 编辑 src/wifi_secrets.h，填 2.4GHz SSID / 密码
+# 编辑 WIFI_NETWORK_LIST，按顺序填 2.4GHz SSID / 密码：
+#   {"家里 Wi-Fi", "密码"},
+#   {"手机热点", "密码"}
 
 pio run -e sticks3 -t upload
 pio device monitor -e sticks3
@@ -63,14 +67,14 @@ pio device monitor -e sticks3
 
 `wifi_secrets.h` 已在 `.gitignore` 里，**不要提交真实密码**。
 
-首次构建会下载 pioarduino 平台和 Adafruit TinyUSB，约 20–30 分钟；之后增量构建很快。
+首次构建会下载 pioarduino 平台、Adafruit TinyUSB 和 M5GFX，约 20–30 分钟；之后增量构建很快。
 
-已验证（2026-10-26）：
+已验证（2026-10-27）：
 
 ```
 pio run -e sticks3  SUCCESS
-Flash 29.8% (996 KB / 3.3 MB app)
-RAM   21.2%
+Flash 36.0% (1.20 MB / 3.3 MB app)
+RAM   22.1%
 ```
 
 > 本固件只有 Wi‑Fi TCP；`host/esp32_switch.py --port` 的串口路径保留给 UART 固件/其他板子，

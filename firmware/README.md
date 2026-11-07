@@ -31,10 +31,26 @@ The USB HID device is `057E:2009` (`Nintendo Co., Ltd` / `Switch Pro Controller`
 If the Mac shows `Espressif USB JTAG_serial debug unit`, the app didn't boot or
 TinyUSB didn't take over; reset/power-cycle the board.
 
+## Display
+
+The 135×240 StickS3 screen uses M5GFX and built-in English fonts:
+
+- Wi-Fi connection progress, then the local IP and TCP port.
+- Client address and neutral/active input state.
+- Pressed buttons or the active stick and its 12-bit coordinates.
+- Explicit release screens for idle timeout, client disconnect, and Wi-Fi loss.
+
+Input redraws are rate-limited to avoid flicker. Larger displays are centered and
+scaled with the same layout.
+
 ## Wi-Fi
 
 - 2.4GHz only.
 - `WiFi.setSleep(false)` for latency.
+- `WIFI_NETWORK_LIST` can hold up to 4 networks; the firmware tries them in
+  order (home first, phone hotspot second), waits 12s each at boot and 8s each
+  on reconnect, and retries every 10s.
+- The StickS3 screen shows `Network 1/2` while trying, then the IP.
 - Credentials live in `src/wifi_secrets.h`; it is gitignored.
 - TCP has **no authentication**. Use a trusted LAN; don't port-forward 8765.
 

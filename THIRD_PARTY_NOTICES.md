@@ -33,3 +33,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## M5GFX
+
+Source: https://github.com/m5stack/M5GFX
+
+Used as an unmodified PlatformIO dependency for the StickS3 display interface.
+M5GFX is distributed under the MIT license; see the upstream repository for the
+copyright holders and full license text.
