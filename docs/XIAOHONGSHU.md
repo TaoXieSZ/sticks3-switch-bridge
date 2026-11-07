@@ -60,10 +60,20 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 底座
 代码和接线都整理成单独仓库了：https://github.com/TaoXieSZ/sticks3-switch-bridge
 （MIT，含 HID 驱动来源说明；不要提交 Wi‑Fi 密码。）
 
+## 封面
+
+首选 GitHub 里的宣传图：
+
+![宣传图](images/poster-1080.jpg)
+
+- 1080×1440：`docs/images/poster-1080.jpg`
+- 2160×2880 高清：`docs/images/poster.png`
+- 源文件：`docs/promo/poster.html`（HTML/CSS，改文案后 Chrome 截图即可）
+
 ## 配图建议
 
-1. 封面：StickS3 插在 Switch 底座上的实拍 + 大字“StickS3 → Switch 2 手柄”
-2. 架构图：`docs/images/architecture.svg` 导出 PNG
+1. 封面：上面的宣传图，或 StickS3 插底座的实拍（实拍更适合小红书）
+2. 架构图：`docs/images/architecture.png`
 3. 串口 IP / `tap A` 终端截图
 4. Switch 2 “Pro 手柄有线通讯”设置页
 5. 仓库 README 截图
