@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080, initial-scale=1">
+<title>StickS3 Switch Bridge · Switch 2 Poster</title>
+<style>
+  :root{
+    --paper:#f3f0e8; --paper2:#e9e4d9; --ink:#0b0d0f; --graphite:#171a1d; --graphite2:#24282c;
+    --gray:#777b7d; --line:#cfc8ba; --blue:#00a8e8; --blue2:#7fd8f2;
+    --red:#ff4b3e; --orange:#ff7a1a; --white:#fffdf8;
+    --sans:"PingFang SC","Hiragino Sans GB","Avenir Next",sans-serif;
+    --serif:"Songti SC","Noto Serif SC","STSong",Georgia,serif;
+    --mono:"SF Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;width:1080px;height:1440px;overflow:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);position:relative}
+  body::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(11,13,15,.13) 1px,transparent 1px);
+    background-size:22px 22px;
+    mask-image:linear-gradient(180deg,rgba(0,0,0,.55),transparent 72%);
+  }
+  body::after{
+    content:"";position:absolute;right:-170px;top:180px;width:620px;height:620px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,168,232,.14),transparent 65%);pointer-events:none;
+  }
+  .topbar{position:absolute;left:0;right:0;top:0;height:96px;background:var(--ink);color:var(--white);
+    display:flex;align-items:center;justify-content:space-between;padding:0 64px;z-index:5}
+  .topbar .brand{font-size:14px;letter-spacing:.24em;text-transform:uppercase}
+  .topbar .brand b{color:var(--blue);font-weight:500}
+  .topbar .brand i{color:var(--red);font-style:normal}
+  .topbar .ver{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#aeb3b3;text-align:right;line-height:1.6}
+  .topbar .ver strong{color:var(--white);font-weight:500}
+  .dots{display:flex;gap:5px;margin-left:22px}
+  .dots i{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+  .dots i:nth-child(2){background:var(--red)}.dots i:nth-child(3){background:var(--orange)}
+
+  .hero{position:absolute;left:70px;top:142px;width:820px;z-index:3}
+  .hero .accent{position:absolute;left:-22px;top:8px;width:6px;height:210px;background:linear-gradient(180deg,var(--blue),var(--red));}
+  .hero .kicker{font-size:12px;letter-spacing:.24em;color:var(--gray);text-transform:uppercase;margin-left:2px}
+  .hero .small{font-family:var(--serif);font-size:28px;letter-spacing:.12em;margin:18px 0 10px 2px;color:var(--ink)}
+  .hero h1{font-family:var(--sans);font-weight:800;font-size:82px;line-height:1.06;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .hero h1 .line{display:block}
+  .hero h1 .blue{color:var(--blue)} .hero h1 .red{color:var(--red)}
+  .hero .sub{margin:18px 0 0 2px;font-size:20px;color:#4f5353;letter-spacing:.03em}
+  .hero .sub b{color:var(--ink);font-weight:600}
+  .hero .tagline{display:inline-flex;gap:8px;align-items:center;margin:18px 0 0 2px;border:1px solid var(--ink);padding:7px 11px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--white)}
+  .hero .tagline i{width:7px;height:7px;background:var(--blue);border-radius:50%}
+
+  .stage{position:absolute;left:38px;right:38px;top:486px;height:540px;z-index:2}
+  .stage .ring{position:absolute;left:50%;top:48%;width:760px;height:760px;transform:translate(-50%,-50%);
+    border:1px solid rgba(11,13,15,.12);border-radius:50%;pointer-events:none}
+  .stage .ring::before{content:"";position:absolute;inset:82px;border:1px dashed rgba(0,168,232,.22);border-radius:50%}
+  .stage .ring::after{content:"";position:absolute;inset:170px;border:1px solid rgba(255,75,62,.13);border-radius:50%}
+
+  /* laptop */
+  .laptop{position:absolute;left:6px;top:150px;width:210px;filter:drop-shadow(0 24px 28px rgba(11,13,15,.18))}
+  .lid{width:210px;height:136px;border-radius:9px;background:linear-gradient(160deg,#2b3033,#101214);border:1px solid #3c4245;padding:9px;position:relative}
+  .screen{width:100%;height:100%;border-radius:4px;background:#080b0c;padding:9px;font-family:var(--mono);font-size:9px;line-height:1.8;color:#b9f1ff;overflow:hidden}
+  .screen .dim{color:#5e7a7d}.screen .blue{color:var(--blue2)}.screen .red{color:#ff8b80}
+  .base{width:244px;height:9px;margin-left:-17px;margin-top:5px;border-radius:2px 2px 9px 9px;background:linear-gradient(180deg,#343a3d,#171a1d)}
+  .laptop .cap{position:absolute;left:8px;top:176px;width:210px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--gray)}
+
+  /* wifi */
+  .wifi{position:absolute;left:216px;top:186px;width:100px;height:80px}
+  .wifi span{position:absolute;border:1.5px solid rgba(0,168,232,.65);border-left:0;border-bottom:0;border-radius:0 100% 0 0;transform:rotate(45deg)}
+  .wifi span:nth-child(1){width:22px;height:22px;left:12px;top:34px}
+  .wifi span:nth-child(2){width:38px;height:38px;left:4px;top:26px;opacity:.7}
+  .wifi span:nth-child(3){width:54px;height:54px;left:-4px;top:18px;opacity:.38}
+  .wifi .cap{position:absolute;left:-24px;top:72px;width:150px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--blue)}
+
+  /* stick */
+  .stick{position:absolute;left:324px;top:54px;width:170px;height:342px;border-radius:24px;
+    background:linear-gradient(145deg,#34383a 0%,#181b1d 42%,#0d0f10 100%);
+    border:1px solid #3f4548;transform:rotate(-5deg);
+    box-shadow:24px 32px 50px rgba(11,13,15,.28), inset 0 1px 0 rgba(255,255,255,.18)}
+  .stick::before{content:"";position:absolute;left:14px;right:14px;top:13px;height:10px;border-radius:5px;background:linear-gradient(180deg,#4b5052,#24282a)}
+  .stick::after{content:"";position:absolute;left:50%;bottom:12px;transform:translateX(-50%);width:30px;height:4px;border-radius:2px;background:#3b4143}
+  .stick .orange{position:absolute;right:-9px;top:58px;width:9px;height:42px;border-radius:0 5px 5px 0;background:var(--orange);box-shadow:0 0 0 2px rgba(255,122,26,.15)}
+  .stick .screen{position:absolute;left:14px;top:32px;width:142px;height:250px;border-radius:11px;border:1px solid #242b2e;background:#070b0c;padding:11px 10px;overflow:hidden}
+  .stick .screen::after{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.10),transparent 34%)}
+  .scr-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:7px;letter-spacing:.1em;color:#5f7c80}
+  .scr-title{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--blue2);margin-top:15px}
+  .scr-ip{font-family:var(--mono);font-size:17px;color:var(--white);margin-top:4px}
+  .scr-sub{font-family:var(--mono);font-size:8px;color:#6d8789;margin-top:2px}
+  .scr-line{height:1px;background:linear-gradient(90deg,var(--orange),rgba(255,122,26,.06));margin:15px 0 10px}
+  .scr-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;line-height:2.1;color:#8ea4a4}
+  .scr-row b{color:var(--white);font-weight:500}
+  .scr-badge{display:inline-block;margin-top:10px;padding:3px 5px;border:1px solid rgba(0,168,232,.65);color:var(--blue2);font-family:var(--mono);font-size:7px;letter-spacing:.08em}
+  .stick .cap{position:absolute;left:-14px;top:358px;width:200px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gray)}
+  .stick .cap b{display:block;font-family:var(--serif);font-size:17px;color:var(--ink);letter-spacing:.06em;margin-bottom:2px}
+
+  /* switch 2 */
+  .switch{position:absolute;right:6px;top:58px;width:390px;height:360px}
+  .dock{position:absolute;left:20px;bottom:4px;width:350px;height:188px;border-radius:14px;
+    background:linear-gradient(160deg,#2c3134,#111416 62%);border:1px solid #3b4245;
+    box-shadow:0 26px 45px rgba(11,13,15,.25), inset 0 1px 0 rgba(255,255,255,.10)}
+  .dock::before{content:"";position:absolute;left:44px;right:44px;top:18px;height:5px;border-radius:3px;background:#050708;border:1px solid #2c3437}
+  .dock::after{content:"";position:absolute;left:50%;bottom:15px;width:5px;height:5px;border-radius:50%;background:var(--blue);transform:translateX(-50%);box-shadow:0 0 9px var(--blue)}
+  .dock .logo{position:absolute;left:20px;bottom:14px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.18em;color:#e7ecec}
+  .dock .usb{position:absolute;right:12px;top:78px;width:23px;height:12px;border:1px solid #72797a;border-radius:2px;background:#0c1113}
+  .dock .usb::after{content:"USB-A";position:absolute;right:30px;top:-2px;font-family:var(--mono);font-size:7px;color:#9aa3a3;white-space:nowrap}
+  .dock .switch2{position:absolute;right:18px;top:16px;font-family:var(--mono);font-size:8px;letter-spacing:.16em;color:#7f8b8c}
+  .tablet{position:absolute;left:61px;top:6px;width:268px;height:150px;border-radius:10px;background:#080b0c;border:2px solid #30373a;box-shadow:0 12px 24px rgba(0,0,0,.35);z-index:2}
+  .tablet .screen{position:absolute;left:9px;right:9px;top:9px;bottom:9px;border-radius:4px;background:
+    radial-gradient(120px 80px at 30% 30%, rgba(0,168,232,.35), transparent 70%),
+    radial-gradient(120px 80px at 72% 66%, rgba(255,75,62,.30), transparent 70%),
+    linear-gradient(140deg,#0a171a,#111b1e);overflow:hidden}
+  .tablet .screen::before{content:"";position:absolute;left:-30%;top:-60%;width:160%;height:120%;border:1px solid rgba(255,255,255,.16);border-radius:50%;transform:rotate(-18deg)}
+  .tablet .screen::after{content:"Switch 2";position:absolute;left:14px;bottom:12px;font-family:var(--sans);font-weight:800;font-size:17px;letter-spacing:.02em;color:rgba(255,255,255,.92)}
+  .joycon{position:absolute;top:15px;width:42px;height:150px;border-radius:9px;background:linear-gradient(160deg,#3b4144,#171b1e);border:1px solid #4b5255;z-index:3}
+  .joycon.left{left:26px}.joycon.right{right:26px}
+  .joycon .rail{position:absolute;top:13px;bottom:13px;width:6px;border-radius:3px}
+  .joycon.left .rail{right:-3px;background:linear-gradient(180deg,var(--blue2),var(--blue))}
+  .joycon.right .rail{left:-3px;background:linear-gradient(180deg,#ff8f83,var(--red))}
+  .joycon .stick{position:absolute;left:11px;top:36px;width:20px;height:20px;border-radius:50%;background:#22282b;border:1px solid #596164;box-shadow:inset 0 0 0 4px #111517}
+  .joycon .mini{position:absolute;left:15px;top:17px;width:12px;height:4px;border-radius:2px;background:#8b9496}
+  .joycon.left .mini{background:var(--blue2)}
+  .joycon.right .mini{background:#ff8f83}
+  .joycon .cbtn{position:absolute;left:12px;top:78px;width:18px;height:18px;border-radius:5px;background:#0e1214;border:1px solid #5a6265;color:#ffb2a9;font-family:var(--mono);font-size:7px;display:grid;place-items:center}
+  .joycon.right .cbtn{display:grid}
+  .joycon.left .cbtn{display:none}
+  .switch .cap{position:absolute;left:18px;bottom:-34px;width:350px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gray)}
+  .switch .cap b{display:block;font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.06em;margin-bottom:2px}
+  .switch .cap .blue{color:var(--blue)}.switch .cap .red{color:var(--red)}
+
+  /* cable */
+  .cable{position:absolute;left:470px;top:330px;width:190px;height:90px;z-index:4;pointer-events:none}
+  .cable svg{width:100%;height:100%;overflow:visible}
+  .cable .cap{position:absolute;left:-2px;top:66px;width:142px;text-align:left;font-family:var(--mono);font-size:8px;letter-spacing:.01em;color:var(--ink);background:var(--paper);padding:2px 3px;white-space:nowrap}
+
+  .specs{position:absolute;left:70px;right:70px;top:952px;display:flex;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 2px;z-index:3}
+  .specs div{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--gray);text-transform:uppercase}
+  .specs b{color:var(--ink);font-size:14px;font-weight:600;margin-right:5px;letter-spacing:0}
+  .chips{position:absolute;left:70px;right:70px;top:1040px;display:flex;gap:12px;z-index:3}
+  .chip{flex:1;border:1px solid var(--ink);background:rgba(255,253,248,.66);padding:14px 10px;text-align:center;position:relative}
+  .chip::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--blue)}
+  .chip:nth-child(2)::before{background:var(--red)}.chip:nth-child(3)::before{background:var(--orange)}
+  .chip b{display:block;font-size:17px;font-weight:700}
+  .chip span{display:block;margin-top:3px;font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--gray)}
+
+  .footer{position:absolute;left:0;right:0;bottom:0;height:124px;background:var(--ink);color:var(--white);z-index:5;
+    display:flex;align-items:center;justify-content:space-between;padding:0 64px}
+  .footer .url{font-family:var(--mono);font-size:20px;letter-spacing:.01em}
+  .footer .url span{color:var(--blue)}
+  .footer .note{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:#8e9899;text-align:right;line-height:1.8;text-transform:uppercase}
+  .side{position:absolute;right:18px;top:520px;writing-mode:vertical-rl;font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:rgba(11,13,15,.35);text-transform:uppercase;z-index:3}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div style="display:flex;align-items:center">
+      <div class="brand">M5STACK <b>×</b> ESP32-S3 <i>×</i> USB HID</div>
+      <div class="dots"><i></i><i></i><i></i></div>
+    </div>
+    <div class="ver"><strong>OPEN SOURCE</strong><br>v0.1.1 / 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="accent"></div>
+    <div class="kicker">A TINY DIY CONTROLLER BRIDGE</div>
+    <div class="small">一块 M5StickS3</div>
+    <h1><span class="line">变成 <span class="blue">Switch</span> <span class="red">2</span></span><span class="line">有线手柄</span></h1>
+    <div class="sub">Wi‑Fi 发指令 · USB HID 接入 · <b>无需树莓派</b></div>
+    <div class="tagline"><i></i>OPEN SOURCE / MIT / ESP32-S3</div>
+  </div>
+
+  <div class="stage">
+    <div class="ring"></div>
+
+    <div class="laptop">
+      <div class="lid"><div class="screen"><span class="dim">$</span> tap A<br><span class="dim">$</span> tap A,B<br><span class="dim">$</span> hold ZR 1.5<br><span class="blue">tap ok</span><br><span class="dim">$</span> test</div></div>
+      <div class="base"></div>
+      <div class="cap">MAC / PC</div>
+    </div>
+
+    <div class="wifi"><span></span><span></span><span></span><div class="cap">Wi‑Fi 8765</div></div>
+
+    <div class="stick">
+      <div class="orange"></div>
+      <div class="screen">
+        <div class="scr-top"><span>SWITCH BRIDGE</span><span>LIVE</span></div>
+        <div class="scr-title">READY</div>
+        <div class="scr-ip">192.168.1.42</div>
+        <div class="scr-sub">TCP 8765 / USB HID</div>
+        <div class="scr-line"></div>
+        <div class="scr-row"><span>CLIENT</span><b>MAC</b></div>
+        <div class="scr-row"><span>INPUT</span><b>A + DOWN</b></div>
+        <div class="scr-row"><span>TIMEOUT</span><b>2.0s</b></div>
+        <div class="scr-badge">057E:2009</div>
+      </div>
+      <div class="cap"><b>M5StickS3</b>ESP32-S3 / WI-FI</div>
+    </div>
+
+    <div class="switch">
+      <div class="dock">
+        <div class="logo">SWITCH 2</div>
+        <div class="switch2">DOCK / USB-A</div>
+        <div class="usb"></div>
+      </div>
+      <div class="tablet"><div class="screen"></div></div>
+      <div class="joycon left"><div class="rail"></div><div class="mini"></div><div class="stick"></div><div class="cbtn">C</div></div>
+      <div class="joycon right"><div class="rail"></div><div class="mini"></div><div class="stick"></div><div class="cbtn">C</div></div>
+      <div class="cap"><b>Switch 2 底座</b><span class="blue">蓝色</span> / <span class="red">红色</span> Joy-Con 2 · USB-A</div>
+    </div>
+
+    <div class="cable">
+      <svg viewBox="0 0 190 90">
+        <defs><linearGradient id="usb" x1="0" x2="1"><stop offset="0" stop-color="#ff7a1a"/><stop offset="1" stop-color="#ff4b3e"/></linearGradient></defs>
+        <path d="M2 68 C42 68 46 22 92 22 S148 68 188 68" fill="none" stroke="url(#usb)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="2" cy="68" r="4" fill="#ff7a1a"/><circle cx="188" cy="68" r="4" fill="#ff4b3e"/>
+      </svg>
+      <div class="cap">USB HID / 有线 Pro</div>
+    </div>
+  </div>
+
+  <div class="side">M5STACK / SWITCH 2 / OPEN SOURCE</div>
+
+  <div class="specs">
+    <div><b>49 B</b>PACKET</div>
+    <div><b>2.0 s</b>AUTO RELEASE</div>
+    <div><b>2.4 GHz</b>WI-FI</div>
+    <div><b>057E:2009</b>USB HID</div>
+  </div>
+
+  <div class="chips">
+    <div class="chip"><b>全按键 + 摇杆</b><span>BUTTONS / STICKS</span></div>
+    <div class="chip"><b>双 Wi‑Fi 回退</b><span>HOME / HOTSPOT</span></div>
+    <div class="chip"><b>MIT 开源</b><span>BUILD IT YOURSELF</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="url">github.com/<span>TaoXieSZ</span>/sticks3-switch-bridge</div>
+    <div class="note">M5STICKS3 · SWITCH 2 · 2026<br>UNOFFICIAL / DIY</div>
+  </div>
+</body>
+</html>

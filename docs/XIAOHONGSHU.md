@@ -64,11 +64,12 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 底座
 
 首选 GitHub 里的宣传图：
 
-![宣传图](images/poster-1080.jpg)
+![宣传图](images/poster-switch2-1080.jpg)
 
-- 1080×1440：`docs/images/poster-1080.jpg`
-- 2160×2880 高清：`docs/images/poster.png`
-- 源文件：`docs/promo/poster.html`（HTML/CSS，改文案后 Chrome 截图即可）
+- 1080×1440：`docs/images/poster-switch2-1080.jpg`（Switch 2 浅色版）
+- 2160×2880 高清：`docs/images/poster-switch2.png`
+- 源文件：`docs/promo/poster-switch2.html`
+- 旧版深绿金：`docs/images/poster-1080.jpg`（保留作对比）
 
 ## 配图建议
 
