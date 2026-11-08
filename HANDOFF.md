@@ -1,6 +1,6 @@
 # Handoff · StickS3 Switch Bridge
 
-> 交接时间：2026-10-27
+> 交接时间：2026-11-08
 > 当前版本：v0.1.1（屏幕 + 双 Wi-Fi 回退）
 > 仓库：https://github.com/TaoXieSZ/sticks3-switch-bridge （public，已推送）
 
@@ -30,10 +30,10 @@ Mac/PC ──WiFi TCP 8765──> StickS3 ──USB HID──> Switch 2 dock
 | Wi-Fi TCP + Python CLI | ✅ 已验证 |
 | Host 单元测试 | ✅ 16 passed |
 | 安全补丁（Wi-Fi 断线松键） | ✅ 已进源码；**正确的 StickS3 待重烧** |
-| 仓库 | ✅ 本地 git，tag `v0.1.1`（待推送） |
+| 仓库 | ✅ tag `v0.1.1` 已推送；最新 main 含海报/文档 |
 | GitHub | ✅ 已创建并推送：https://github.com/TaoXieSZ/sticks3-switch-bridge |
-| CI | ⏳ 首次 build 运行中（Actions） |
-| 文档 | README / PROTOCOL / WIFI / firmware README / 本文 / XIAOHONGSHU |
+| CI | ✅ build success（GitHub Actions） |
+| 文档 | README / PROTOCOL / WIFI / firmware README / 本文 / XIAOHONGSHU / 宣传图 |
 
 ## 3. 目录
 
@@ -104,11 +104,12 @@ Switch 2：设置 → 手柄与外设 → **Pro 手柄有线通讯** → 开。
 
 1. ~~创建 GitHub public repo 并 push main + tags。~~ 已完成。
 2. ~~加 GitHub Actions：`pio run -e sticks3`。~~ 已加。
-3. 发 v0.1.1 Release；如有需要再附 `firmware.bin` + SHA256。
+3. ~~发 v0.1.1 Release~~ 已完成；如需再附 `firmware.bin` + SHA256。
 4. 补实拍/视频：StickS3 插底座、Switch 识别 Pro 手柄、`test` 按键。
 5. 测 Switch 1（如果手头有）。
+6. 海报：`docs/images/poster-switch2-1080.jpg`；实拍封面仍待补。
 6. 可选：加 TCP token、mDNS、rumble 协议扩展。
-7. 小红书：先发“玩法”，再发“开源”；草稿在 `docs/XIAOHONGSHU.md`。
+8. 小红书：先发“玩法”，再发“开源”；草稿在 `docs/XIAOHONGSHU.md`。
 
 ## 8. 发布命令
 
